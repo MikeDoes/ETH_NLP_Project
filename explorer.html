@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinNum Explorer</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+
+    <style>
+        body {
+            font-family: 'Montserrat', serif;
+        }
+
+        #app {
+            margin-top: 20px;
+        }
+
+        #buttons {
+            width: 300px;
+            position: absolute;
+            bottom: 20px;
+            margin-bottom: 20px;
+            left: 50%;
+            margin-left: -102px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="container">
+        <h2>Paragraph: #{{counter +1}}</h2>
+        <p>{{displayed_paragraph}}</p>
+        <li v-for="item in text[counter]['entities']">
+            {{item}}
+        </li>
+    </div>
+    <div id='buttons' class="container">
+        <button type="button" onclick="app.decrease()" class="btn btn-info">Previous</button>
+        <button type="button" onclick="app.increase()" class="btn btn-primary">Next</button>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+            text: [{ "paragraph": "In care delivery our clinical leaders are applying clinical physician support based on evidence-based guidelines that promote better health and ensure the right care at the right time in the right setting. Today 99% of OptumCare patients in our advanced form of Medicare value arrangements are in 4-star plans or better and OptumCare's average Net Promoter Score is nearly 80 evidence of outstanding clinical outcomes and patient experiences." }],
+            displayed_paragraph: "In care delivery our clinical leaders are applying clinical physician support based on evidence-based guidelines that promote better health and ensure the right care at the right time in the right setting. Today 99% of OptumCare patients in our advanced form of Medicare value arrangements are in 4-star plans or better and OptumCare's average Net Promoter Score is nearly 80 evidence of outstanding clinical outcomes and patient experiences.",
+        },
+        methods: {
+            get_data: async function () {
+                fetch("fin_num_merged.json")
+                    .then(response => response.json())
+                    .then(data => this.text = data)
+
+            },
+            increase: function () {
+                this.counter += 1;
+                this.display_paragraph()
+            },
+            decrease: function () {
+                this.counter -= 1;
+                this.display_paragraph()
+            },
+
+            display_paragraph: function () {
+                this.displayed_paragraph = this.text[this.counter]['paragraph']
+            },
+            
+            highlight_paragraph: function () {
+                highlights = [this.text[counter]['entities']]
+                
+
+                }
+            
+
+        }
+    })
+
+    var start = async function () {
+        await app.get_data();
+        await app.display_paragraph();
+    }
+
+    start()
+</script>
+
+
+</html>
