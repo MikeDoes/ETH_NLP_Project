@@ -5,8 +5,10 @@ path = 'FinNum-3_ConCall_dev.json'
 with open(path,'r') as f:
     data = json.load(f)
 
+## to do @satirocoelho tests
 
-print('Sample Entry', data[0])
+
+print('Sample Entry test', data[0])
 
 unique_paragraph_list = []
 for entry in data:
