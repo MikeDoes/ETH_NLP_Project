@@ -1,0 +1,15 @@
+﻿{"id":1,"description":"chars","created_at":null,"updated_at":null}
+{"id":2,"description":"lc_no_punct","created_at":null,"updated_at":null}
+{"id":3,"description":"stem","created_at":null,"updated_at":null}
+{"id":4,"description":"pattern","created_at":null,"updated_at":null}
+{"id":5,"description":"nodigits","created_at":null,"updated_at":null}
+{"id":6,"description":"lcnodigits","created_at":null,"updated_at":null}
+{"id":7,"description":"digits","created_at":null,"updated_at":null}
+{"id":8,"description":"digit_count","created_at":null,"updated_at":null}
+{"id":9,"description":"has_leading_zeros","created_at":null,"updated_at":null}
+{"id":10,"description":"value","created_at":null,"updated_at":null}
+{"id":11,"description":"mult_of_10_pow","created_at":null,"updated_at":null}
+{"id":12,"description":"number_approx","created_at":null,"updated_at":null}
+{"id":13,"description":"previous_number_seen_before","created_at":null,"updated_at":null}
+{"id":14,"description":"next_number_seen_after","created_at":null,"updated_at":null}
+{"id":15,"description":"sign","created_at":null,"updated_at":null}
