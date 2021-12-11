@@ -9,28 +9,20 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-
-    <style>
-        body {
-            font-family: 'Montserrat', serif;
-        }
-
-        #app {
-            margin-top: 20px;
-        }
-
-        #buttons {
-            width: 300px;
-            position: absolute;
-            bottom: 20px;
-            margin-bottom: 20px;
-            left: 50%;
-            margin-left: -102px;
-        }
-    </style>
+    <!-- Fancy Explorer Animation -->
+    <link rel="stylesheet" href="static/style.css">
 </head>
 
 <body>
+    <div class="wrapper">
+        <span class="menu"></span>
+    
+        <h1 id="header">🏦 FinNum Data Explorer 🔎 </h1>
+    <img id='logo' src="static/logo.png"></img>
+
+  
+
+
     <div id="app" class="container">
         <h2>Paragraph: #{{counter +1}}</h2>
         <p>{{displayed_paragraph}}</p>
@@ -39,9 +31,21 @@
         </li>
     </div>
     <div id='buttons' class="container">
-        <button type="button" onclick="app.decrease()" class="btn btn-info">Previous</button>
-        <button type="button" onclick="app.increase()" class="btn btn-primary">Next</button>
+        <button type="button" onclick="app.decrease()" class="btn btn-info">Previous 📉</button>
+        <button type="button" onclick="app.increase()" class="btn btn-primary">Next 📈</button>
     </div>
+    <p id="teamname">#Team FinNum: Clemente Pasti, Mariana Coelho, Michael Mazourik, Vasileios Papaefthymiou</p>
+
+    
+        <div class="overlay">
+            <ul>
+                <li><a href="dataset.html">Dataset Structure</a></li>
+                <li><a href="explorer.html">Dataset Explorer</a></li>
+            </ul>
+        </div>
+    
+    </div>
+    
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 <script>
@@ -89,6 +93,20 @@
 
     start()
 </script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
 
+$('.menu').click(function() {
+    $('.overlay').toggleClass('anim');
+    $(this).addClass('open')
+});
+
+$('.open').click(function(){
+    $('.overlay').toggleClass('reverse-animation');
+})
+});
+
+</script>
 
 </html>
