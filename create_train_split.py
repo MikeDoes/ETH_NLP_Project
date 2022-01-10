@@ -1,7 +1,7 @@
 import json
 import numpy as np
 
-path = 'fin_num_merged.json'
+path = 'fin_num_3.json'
 
 
 with open(path,'r') as f:
