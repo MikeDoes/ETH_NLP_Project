@@ -1,7 +1,7 @@
 import json
 import numpy as np
 
-path = 'fin_num_3.json'
+path = 'fin_num_5.json'
 
 
 with open(path,'r') as f:
@@ -25,5 +25,5 @@ for i, index in enumerate(indices):
 
 for dataset, name in zip([train_set, test_set, validate_set], ['train', 'test', 'validate']):
 
-    with open(f'fin_num_{name}.json','w') as f:
+    with open(f'fin_num_5_{name}.json','w') as f:
         json.dump(dataset, f)

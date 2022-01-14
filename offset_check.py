@@ -3,7 +3,8 @@ import json
 #path = 'fin_num_merged_manual_fix.json'
 #path = 'fin_num_merged.json'
 
-path = 'fin_num_merged_fixed_offsets.json'
+#path = 'fin_num_merged_fixed_offsets.json'
+path = "fin_num_4.json"
 
 with open(path,'r') as f:
     data = json.load(f)

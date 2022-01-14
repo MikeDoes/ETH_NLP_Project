@@ -25,33 +25,50 @@ with open('enron json/documents.json','r') as f:
 
 #Retrieve document by ID
 def get_doc_id(documents, id):
-    try:
-        for document in documents:
-            if document['id'] == id:
-                return document['content']
-    except:
-        print(documents)
-        print(id)
+    for document in documents:
+        if document['id'] == id:
+            return document['content']
 
+#Retrieve category by id
 def get_category_id(documents, id):
     for document in documents:
         if document['id'] == id:
             return document['name']
-        
+
+#Category Mapping
+def map_category(enron_category):
+    if enron_category in ["Time", "Short Date", "Day of the Month", "Month", "Year", "Duration", "Quarter Year", "Day Month", "Day Month Year", "Month Year", "Year Month Day", "Year Month", "Timezone offset"]:
+        return "date"
+    
+    elif enron_category in ["Cardinal"]:
+        return "quantity_absolute"
+    
+    elif enron_category in ["Fraction", "Percentage"]:
+        return "quantity_relative"
+
+    elif enron_category in ["Currency"]:
+        return "currency"
+
+    else:
+        return "other"
+
+
+
 
 #Step 2: Renaming the categories, ensuring target_num is either integer or float, creating ending offset and adding document
 new_annotations = []
 for i, annotation in enumerate(annotations):
     if i == len(annotations)-1: continue
-    new_annotation = {"claim": 2, }
+    new_annotation = {"claim": 2}
     new_annotation["paragraph"] = get_doc_id(documents, annotation['document_id'])
-    new_annotation["category"] = get_category_id(categories, annotation['category_id'])
+    new_annotation["category"] = map_category(get_category_id(categories, annotation['category_id']))
     new_annotation["offset_start"] = annotation["first_char"]
     new_annotation["offset_end"] = annotation["first_char"] + annotation["length"]
     new_annotation["target_num"] = new_annotation["paragraph"][new_annotation["offset_start"]:new_annotation["offset_end"]]
     #Is it integer-able?
     try: 
-        new_annotation["target_num"] = int(new_annotation["target_num"])
+        str(int(new_annotation["target_num"]))
+        new_annotation["target_num"] = str(new_annotation["target_num"])
         new_annotations += [new_annotation]
         continue
 
@@ -59,7 +76,8 @@ for i, annotation in enumerate(annotations):
         integer_ed = False
     #Is it float-able
     try: 
-        new_annotation["target_num"] = float(new_annotation["target_num"])
+        new_annotation["target_num"] = str(float(new_annotation["target_num"]))
+        new_annotation["target_num"] = str(new_annotation["target_num"])
         new_annotations += [new_annotation]
         continue
 
@@ -70,3 +88,4 @@ print("Number of Annotations", len(new_annotations))
     
 with open('enron_original_finnum_schema.json','w') as f:
     json.dump(new_annotations, f)
+

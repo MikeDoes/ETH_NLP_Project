@@ -1,8 +1,11 @@
 import re
 import json 
 
-path = 'fin_num_merged_manual_fix.json'
+path = "fin_num_4.json"
 #path = 'fin_num_merged.json'
+
+
+paragraph_with_non_present_entities = []
 
 with open(path,'r') as f:
     data = json.load(f)
@@ -26,17 +29,18 @@ for i, paragraph_dict in enumerate(data):
 
             if entity != entity_dict['target_num']:
                 
-                
-
-                
-
                 detected = True
 
         if detected:
+            if len(instances) == 0:
+                paragraph_with_non_present_entities += [i]
+                
+                continue
+
             if len(instances) == 1:
                 print('Only one instance')
                 allocation_index = 0
-                
+            
 
             else:
                 print('\nParagraph Text: \n', paragraph_dict['paragraph'])
@@ -49,10 +53,11 @@ for i, paragraph_dict in enumerate(data):
             
             data[i]['entities'][j]['offset_start'], data[i]['entities'][j]['offset_end'] = instances[allocation_index].span()
             
-                
+for i in paragraph_with_non_present_entities[::-1]:
+    del data[i]
             
 
-with open('fin_num_merged_fixed_offsets.json','w') as f:
+with open('enron_fin_num_merged_fixed_offsets.json','w') as f:
     json.dump(data, f)
         
 
