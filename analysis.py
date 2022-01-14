@@ -1,6 +1,6 @@
 import json 
 
-path = 'FinNum-3_ConCall_dev.json'
+path = 'enron_original_finnum_schema.json'
 
 with open(path,'r') as f:
     data = json.load(f)
@@ -52,7 +52,7 @@ for item in new_json:
 
 
 
-with open('fin_num_merged.json','w') as f:
+with open('enron_num.json','w') as f:
     json.dump(new_json, f)
 
 
