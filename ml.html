@@ -1,31 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>FinNum ML Predictions</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link
-        rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-        <!-- Fancy Explorer Animation -->
-        <link rel="stylesheet" href="static/style.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinNum Prediction Explorer</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <!-- Fancy Explorer Animation -->
+    <link rel="stylesheet" href="static/style.css">
+</head>
 
-    <body>
-        <div class="wrapper">
-            <span class="menu"></span>
+<body>
+    <div class="wrapper">
+        <span class="menu"></span>
+    
+        <h1 id="header">🏦 FinNum Prediction Explorer 🔎 </h1>
+        <a href="https://rycolab.io/"><img id='logo' src="static/logo.png"></img></a>
 
-            <h1 id="header">🏦 FinNum ML Predictions 🔎</h1>
-            <a href="https://rycolab.io/"><img id='logo' src="static/logo.png"></img></a>
-
-
-        <!-- Content goes here -->
-        
-        <p id="teamname">#Team FinNum: Clemente Pasti, Mariana Coelho, Michael Mazourik, Vasileios Papaefthymiou</p>
+  
 
 
+    <div id="app" class="container">
+        <div class="predictions">
+        <h2>Text: #{{counter +1}}</h2>
+        <p>{{displayed_paragraph}}</p>
+        </div>
+        <div class="predictions">
+            <h2>Predictions:</h2>
+            <p>{{this.text[counter][1]}}</p>
+        </div>
+        <div class="predictions">
+        <h2>True Annotations:</h2>
+        <p>{{this.text[counter][2]}}</p>
+        </div>
+    </div>
+    <div id='buttons' class="container">
+        <button type="button" onclick="app.decrease()" class="btn btn-info">Previous 📉</button>
+        <button type="button" onclick="app.increase()" class="btn btn-primary">Next 📈</button>
+    </div>
+    <p id="teamname">#Team FinNum: Clemente Pasti, Mariana Coelho, Michael Mazourik, Vasileios Papaefthymiou</p>
+
+    
         <div class="overlay">
             <ul>
                 <li><a href="dataset.html">Dataset Structure</a></li>
@@ -33,20 +51,78 @@
                 <li><a href="ml.html">ML Pipeline</a></li>
             </ul>
         </div>
-    </div><script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script><script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script><script>$(document).ready(function () {
-
-    $('.menu').click(function () {
-        $('.overlay').toggleClass('anim');
-        $(this).addClass('open')
-    });
-
-    $('.open').click(function () {
-        $('.overlay').toggleClass('reverse-animation');
-    })
-});</script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.2/chart.min.js" integrity="sha512-tMabqarPtykgDtdtSqCL3uLVM0gS1ZkUAVhRFu1vSEFgvB73niFQWJuvviDyBGBH22Lcau4rHB5p2K2T0Xvr6Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<script src="static/building_chart.js"></script>
+    
+    </div>
+    
 </body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+            text: [["before we get started id like to draw your attention to our safe harbor statement on slide 2 information in this presentation contains statements about expected future events and financial results that are forwardlooking and subject to risks and uncertainties discussion of factors that may affect future results is contained in verizons filings with the sec which are now available on our website", 
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "other", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "other", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+] ,
+            displayed_paragraph: "In care delivery our clinical leaders are applying clinical physician support based on evidence-based guidelines that promote better health and ensure the right care at the right time in the right setting. Today 99% of OptumCare patients in our advanced form of Medicare value arrangements are in 4-star plans or better and OptumCare's average Net Promoter Score is nearly 80 evidence of outstanding clinical outcomes and patient experiences.",
+        },
+        methods: {
+            get_data: async function () {
+                fetch("data/predictions/test_prediction_RD_15_0.00003_4_finnum_5_bertuncase.json")
+                    .then(response => response.json())
+                    .then(data => this.text = data)
+
+            },
+            increase: function () {
+                this.counter += 1;
+                this.counter %= 89;
+                if (this.counter == -1){this.counter = 88}
+                this.display_paragraph()
+            },
+            decrease: function () {
+                this.counter -= 1;
+                this.counter %= 89;
+                if (this.counter == -1){this.counter = 88}
+
+                this.display_paragraph()
+
+            },
+
+            display_paragraph: function () {
+                this.displayed_paragraph = this.text[this.counter][0]
+            },
+            
+            highlight_paragraph: function () {
+                this.highlights = [this.text[this.counter][1]]
+                
+                }
+            
+
+        }
+    })
+
+    var start = async function () {
+        await app.get_data();
+        await app.display_paragraph();
+    }
+
+    start()
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+
+$('.menu').click(function() {
+    $('.overlay').toggleClass('anim');
+    $(this).addClass('open')
+});
+
+$('.open').click(function(){
+    $('.overlay').toggleClass('reverse-animation');
+})
+});
+
+</script>
+
 </html>
