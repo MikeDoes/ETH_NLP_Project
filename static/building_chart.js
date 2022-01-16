@@ -9,7 +9,20 @@ const info = {"other": 106,
     "quantity_relative": 45,
     "absolute": 85,
     "product_number": 26
-}
+} 
+/* This is for the enron dataset
+const info = {"other": 323,
+    "relative": 0,
+    "date": 179,
+    "quantity_absolute": 204,
+    "money": 4,
+    "change": 0,
+    "quantity_relative": 7,
+    "absolute": 0,
+    "product_number": 0
+} */
+
+
 console.log(info)
 const labels = Object.keys(info);
 const data = {
@@ -44,8 +57,8 @@ const data = {
         }
     ]
 };
-Chart.defaults.color = "#fff";
-Chart.borderColor = "#fff";
+Chart.defaults.color = "#000";
+Chart.borderColor = "#000";
 
 var myBarChart = new Chart(ctx, {
     type: 'bar',
