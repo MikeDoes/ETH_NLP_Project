@@ -17,14 +17,12 @@ print('Length of paragraphs', len(unique_paragraph_list))
 
 category_count = {}
 for element in data:
-    try:
         category = element['category']
 
         if category not in category_count.keys():
             category_count[category] = 0
 
         category_count[category] += 1
-    except:
         print(element)   
 print('category count', category_count)
 
