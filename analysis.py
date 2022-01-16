@@ -1,6 +1,6 @@
 import json 
 
-path = 'enron_original_finnum_schema.json'
+path = 'fin_num_5.json'
 
 with open(path,'r') as f:
     data = json.load(f)
@@ -17,13 +17,15 @@ print('Length of paragraphs', len(unique_paragraph_list))
 
 category_count = {}
 for element in data:
-    category = element['category']
+    try:
+        category = element['category']
 
-    if category not in category_count.keys():
-        category_count[category] = 0
+        if category not in category_count.keys():
+            category_count[category] = 0
 
-    category_count[category] += 1
-    
+        category_count[category] += 1
+    except:
+        print(element)   
 print('category count', category_count)
 
     
